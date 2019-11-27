@@ -1,0 +1,21 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 9
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:node/recommended",
+    "airbnb"
+  ],
+  "rules": {
+    "node/prefer-global/console": ["error", "always"],
+    "semi": ["error", "always"],
+    "max-len": ["warn", { "code": 120 }],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "space-before-function-paren": ["error", "always"]
+  }
+}
