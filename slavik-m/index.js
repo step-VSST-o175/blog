@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 
@@ -19,7 +20,7 @@ app.get('/', async (req, res) => {
 
     console.log(posts);
 
-    res.render('pages/index', {
+    res.render('pages/index/index', {
       posts,
     });
   } catch (error) {
