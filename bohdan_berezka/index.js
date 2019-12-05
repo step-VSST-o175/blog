@@ -22,6 +22,18 @@ app.post('/', (req, res) => {
   res.send('Hello World! ewfrewfw');
 });
 
+app.patch('/', (req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  res.send('Hello World! patch');
+});
+
+app.put('/', (req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  res.send('Hello World! put');
+});
+
 app.listen(config.server.port, () => {
   console.log(`App listening on port ${config.server.port}!`);
 });
