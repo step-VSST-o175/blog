@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require('./src/db/index');
 const config = require('./src/config');
 
 const app = express();
@@ -10,16 +11,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  console.log(req.query);
-  console.log(req.body);
-  res.send('Hello World! ewfrewfw');
-});
+app.set('view engine', 'ejs');
 
-app.post('/', (req, res) => {
-  console.log(req.query);
-  console.log(req.body);
-  res.send('Hello World! ewfrewfw');
+app.get('/', async (req, res) => {
+  try {
+    const posts = await db.query('SELECT * from posts');
+
+    console.log(posts);
+
+    res.render('pages/index', {
+      posts,
+    });
+  } catch (error) {
+    res.render('pages/error');
+  }
 });
 
 app.listen(config.server.port, () => {
