@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>POSTS</header>
+<main>
+    <div class="posts">
+        <% posts.forEach(function(post) { %>
+            <div class="post">
+                <h1 class="post-title"><%= post.title %></h1>
+                <p class="post-title"><%= post.content %></p>
+            </div>
+        <% }); %>
+    </div>
+</main>
+</body>
+</html>
