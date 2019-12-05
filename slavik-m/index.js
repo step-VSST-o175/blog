@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require('./src/db/index');
 const config = require('./src/config');
 
 const app = express();
@@ -13,28 +14,12 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  console.log(req.query);
-  console.log(req.body);
-  // res.send('Hello World! ewfrewfw');
+  db.query('SELECT * from posts')
+    .then((rows) => {
+      console.log(rows);
+    });
+
   res.render('pages/index');
-});
-
-app.post('/user', (req, res) => {
-  console.log(req.query);
-  console.log(req.body);
-  res.send('Hello World! ewfrewfw');
-});
-
-app.patch('/', (req, res) => {
-  console.log(req.query);
-  console.log(req.body);
-  res.send('Hello World! ewfrewfw');
-});
-
-app.put('/', (req, res) => {
-  console.log(req.query);
-  console.log(req.body);
-  res.send('Hello World! ewfrewfw');
 });
 
 app.listen(config.server.port, () => {
