@@ -1,10 +1,25 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const config = require('./src/config');
 
 const app = express();
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  console.log(req.query);
+  console.log(req.body);
+  res.send('Hello World! ewfrewfw');
+});
+
+app.post('/', (req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  res.send('Hello World! ewfrewfw');
 });
 
 app.listen(config.server.port, () => {
