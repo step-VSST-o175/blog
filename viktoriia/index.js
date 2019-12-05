@@ -1,7 +1,38 @@
-const db = require('./src/db');
+const express = require('express');
+const bodyParser = require('body-parser');
+const config = require('./src/config');
 
-db.query('SELECT * from posts')
-  .then((rows) => {
-    console.log(rows);
-    // return db.close();
-  });
+const app = express();
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+    console.log(req.query);
+    console.log(req.body);
+    res.send('Hello World! ewfrewfw');
+});
+
+app.post('/', (req, res) => {
+    console.log(req.query);
+    console.log(req.body);
+    res.send('Hello World! ewfrewfw');
+});
+
+app.patch('/', (req, res) => {
+    console.log(req.query);
+    res.send('Hello World! from patch');
+});
+
+app.put('/', (req, res) => {
+    console.log(req.query);
+    res.send('Hello World! from put');
+});
+
+app.listen(config.server.port, () => {
+    console.log(`App listening on port ${
+        config.server.port}!`);
+});
