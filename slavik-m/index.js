@@ -13,13 +13,18 @@ app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-  db.query('SELECT * from posts')
-    .then((rows) => {
-      console.log(rows);
-    });
+app.get('/', async (req, res) => {
+  try {
+    const posts = await db.query('SELECT * from posts');
 
-  res.render('pages/index');
+    console.log(posts);
+
+    res.render('pages/index', {
+      posts,
+    });
+  } catch (error) {
+    res.render('pages/error');
+  }
 });
 
 app.listen(config.server.port, () => {
