@@ -13,13 +13,25 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   console.log(req.query);
   console.log(req.body);
-  res.send('Hello World! ewfrewfw');
+  res.send('Hello World! get');
 });
 
 app.post('/', (req, res) => {
   console.log(req.query);
   console.log(req.body);
-  res.send('Hello World! ewfrewfw');
+  res.send('Hello World! post');
+});
+
+app.patch('/', (req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  res.send('Hello World! patch');
+});
+
+app.put('/', (req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  res.send('Hello World! put');
 });
 
 app.listen(config.server.port, () => {
