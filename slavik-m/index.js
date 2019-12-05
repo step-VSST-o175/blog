@@ -10,13 +10,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  // res.send('Hello World! ewfrewfw');
+  res.render('pages/index');
+});
+
+app.post('/user', (req, res) => {
   console.log(req.query);
   console.log(req.body);
   res.send('Hello World! ewfrewfw');
 });
 
-app.post('/', (req, res) => {
+app.patch('/', (req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  res.send('Hello World! ewfrewfw');
+});
+
+app.put('/', (req, res) => {
   console.log(req.query);
   console.log(req.body);
   res.send('Hello World! ewfrewfw');
