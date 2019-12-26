@@ -10,16 +10,10 @@
 <body>
     <header>Some header</header>
     <div class="container mt-4">
-        <div class="posts">
-            <% posts.forEach(function(post) { %>
-                <div class="post">
-                    <h2 class="post-title">
-                        <a href="/post/<%= post.id %>"><%= post.title %></a>
-                    </h2>
-                    <p class="post-title"><%= post.disclaimer %></p>
-                    <hr />
-                </div>
-            <% }); %>
+        <div class="post">
+            <h2 class="post-title"><%= post.title %></h2>
+            <p class="post-body"><%= post.conent %></p>
+            <hr />
         </div>
     </div>
 </body>
