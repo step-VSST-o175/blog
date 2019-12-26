@@ -18,16 +18,12 @@ app.get('/', async (req, res) => {
   try {
     const posts = await db.query('SELECT * from posts');
     console.log(posts);
-<<<<<<< Updated upstream
 
     res.render('pages/index/index', {
-=======
-    res.render('pages/index', {
->>>>>>> Stashed changes
       posts,
     });
-  }
-  catch (error) {
+  } catch (error) {
+    console.error(error);
     res.render('pages/error');
   }
 });
