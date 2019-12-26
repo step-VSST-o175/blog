@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(`${__dirname}/public`));
 
 app.set('view engine', 'ejs');
 
@@ -21,6 +21,20 @@ app.get('/', async (req, res) => {
 
     res.render('pages/index/index', {
       posts,
+    });
+  } catch (error) {
+    console.error(error);
+    res.render('pages/error');
+  }
+});
+app.get('/post/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const [post] = await db.query('SELECT * from posts WHERE id=?', id);
+
+    res.render('pages/post/post', {
+      post,
     });
   } catch (error) {
     console.error(error);
