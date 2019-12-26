@@ -8,18 +8,18 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
+app.use(express.static(`${__dirname}/public`));
 
 app.set('view engine', 'ejs');
 
 app.get('/', async (req, res) => {
   try {
-    const rows = await db.query('SELECT * from posts');
-    console.log(rows);
-    res.render('pages/index'){
+    const posts = await db.query('SELECT * from posts');
+    console.log(posts);
+    res.render('pages/index', {
       posts,
-    }
-  }
-  catch (error) {
+    });
+  } catch (error) {
     res.render('pages/erroe');
   }
 });
