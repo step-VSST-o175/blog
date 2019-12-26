@@ -18,7 +18,15 @@ app.get('/', async (req, res) => {
   try {
     const posts = await db.query('SELECT * from posts');
     console.log(posts);
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+
+    res.render('pages/index/index', {
+=======
+=======
+>>>>>>> Stashed changes
     res.render('pages/index', {
+>>>>>>> Stashed changes
       posts,
     });
   }
