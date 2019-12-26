@@ -32,9 +32,11 @@ app.get('/post/:id', async (req, res) => {
     const { id } = req.params;
     console.log(id);
     const [post] = await db.query('SELECT * from posts WHERE id=?', id);
+    const comments = await db.query('SELECT * from comments WHERE post_id=?', id);
 
     res.render('pages/post/post', {
       post,
+      comments,
     });
   } catch (error) {
     console.error(error);

@@ -15,6 +15,16 @@
             <p class="post-body"><%= post.content %></p>
             <hr />
         </div>
+        <div class="container">
+            <% comments.forEach(function(comment) { %>
+                <div class="comment text-light bg-dark">
+                    <h4 class="comment-title"><%= comment.name %></h4>
+                    <p class="post-body"><%= comment.text %></p>
+                    <hr />
+                </div>
+            <% }); %>
+        </div>
+
     </div>
 </body>
 </html>
