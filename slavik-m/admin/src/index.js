@@ -1,3 +1,6 @@
-const a = 30;
+import React from 'react';
+import { render } from 'react-dom';
 
-console.log(a + 30);
+import App from './App';
+
+render(document.getElementById('root'), <App />);
