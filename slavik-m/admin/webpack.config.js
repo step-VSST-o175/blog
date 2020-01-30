@@ -23,6 +23,9 @@ module.exports = {
     extensions: ['.js', 'jsx'],
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'My React App',
+      filename: 'src/admin.html',
+    }),
   ],
 };
