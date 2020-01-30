@@ -25,7 +25,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'My React App',
-      filename: 'src/admin.html',
+      template: 'src/index.html',
     }),
   ],
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+  }
 };
